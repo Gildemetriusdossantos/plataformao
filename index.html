@@ -1,0 +1,2685 @@
+html
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MATEMÁTICA FÁCIL - Plataforma de Cursos Online</title>
+    <!-- Fontes -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <style>
+        /* Reset e configurações gerais */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --azul-principal: #1a56db;
+            --azul-secundario: #3b82f6;
+            --azul-claro: #93c5fd;
+            --azul-escuro: #1e3a8a;
+            --branco: #ffffff;
+            --cinza-claro: #f3f4f6;
+            --cinza-medio: #9ca3af;
+            --cinza-escuro: #374151;
+            --verde: #10b981;
+            --vermelho: #ef4444;
+            --amarelo: #f59e0b;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            line-height: 1.6;
+            color: var(--cinza-escuro);
+            background-color: var(--cinza-claro);
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        button {
+            cursor: pointer;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header e Navegação */
+        header {
+            background-color: var(--branco);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--azul-escuro);
+        }
+
+        .logo i {
+            color: var(--azul-principal);
+            font-size: 1.8rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--cinza-escuro);
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--azul-principal);
+        }
+
+        .user-menu {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            border: none;
+            transition: all 0.3s;
+        }
+
+        .btn-primary {
+            background-color: var(--azul-principal);
+            color: var(--branco);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--azul-escuro);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(26, 86, 219, 0.3);
+        }
+
+        .btn-secondary {
+            background-color: var(--branco);
+            color: var(--azul-principal);
+            border: 2px solid var(--azul-principal);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--azul-claro);
+        }
+
+        .btn-success {
+            background-color: var(--verde);
+            color: var(--branco);
+        }
+
+        .btn-danger {
+            background-color: var(--vermelho);
+            color: var(--branco);
+        }
+
+        .btn-warning {
+            background-color: var(--amarelo);
+            color: var(--branco);
+        }
+
+        .btn-sm {
+            padding: 0.5rem 1rem;
+            font-size: 0.85rem;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--azul-escuro);
+        }
+
+        /* Página Inicial */
+        .hero {
+            background: linear-gradient(135deg, var(--azul-principal), var(--azul-escuro));
+            color: var(--branco);
+            padding: 5rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100"><path fill="rgba(255,255,255,0.05)" d="M0,0V100H1000V0C800,50 600,80 400,90 200,100 100,70 0,0Z"/></svg>') bottom center no-repeat;
+            background-size: cover;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            opacity: 0.9;
+        }
+
+        .features {
+            padding: 5rem 0;
+            background-color: var(--branco);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--azul-escuro);
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .feature-card {
+            text-align: center;
+            padding: 2rem;
+            border-radius: 15px;
+            background-color: var(--branco);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            border: 1px solid rgba(147, 197, 253, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .feature-card i {
+            font-size: 3rem;
+            color: var(--azul-principal);
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--azul-principal), var(--azul-secundario));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--azul-escuro);
+        }
+
+        /* Página de Cursos */
+        .courses-header {
+            padding: 3rem 0;
+            background-color: var(--branco);
+            text-align: center;
+        }
+
+        .courses-header h1 {
+            color: var(--azul-escuro);
+            font-size: 2.5rem;
+        }
+
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2rem;
+            padding: 3rem 0;
+        }
+
+        .course-card {
+            background-color: var(--branco);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(147, 197, 253, 0.3);
+        }
+
+        .course-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .course-image {
+            height: 200px;
+            width: 100%;
+            background: linear-gradient(135deg, var(--azul-principal), var(--azul-escuro));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--branco);
+            font-size: 4rem;
+            position: relative;
+        }
+
+        .course-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom right, rgba(26, 86, 219, 0.9), rgba(30, 58, 138, 0.9));
+        }
+
+        .course-image i {
+            position: relative;
+            z-index: 1;
+        }
+
+        .course-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background-color: var(--verde);
+            color: var(--branco);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            z-index: 2;
+        }
+
+        .course-content {
+            padding: 1.5rem;
+        }
+
+        .course-content h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--azul-escuro);
+        }
+
+        .course-description {
+            color: var(--cinza-medio);
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .course-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding: 0.5rem 0;
+            border-top: 1px solid var(--cinza-claro);
+            border-bottom: 1px solid var(--cinza-claro);
+        }
+
+        .course-price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--azul-principal);
+        }
+
+        .course-rating {
+            color: var(--amarelo);
+            font-size: 0.9rem;
+        }
+
+        .course-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        /* Página de Aulas Demo */
+        .demo-header {
+            padding: 3rem 0;
+            background: linear-gradient(135deg, var(--azul-claro), var(--azul-principal));
+            color: var(--branco);
+            text-align: center;
+        }
+
+        .demo-header h1 {
+            font-size: 2.5rem;
+        }
+
+        .demo-lessons {
+            padding: 3rem 0;
+        }
+
+        .lesson-card {
+            background-color: var(--branco);
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            border: 1px solid rgba(147, 197, 253, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .lesson-card:hover {
+            transform: translateX(5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .lesson-icon {
+            background: linear-gradient(135deg, var(--azul-principal), var(--azul-secundario));
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: var(--branco);
+            flex-shrink: 0;
+            box-shadow: 0 4px 12px rgba(26, 86, 219, 0.3);
+        }
+
+        .lesson-info {
+            flex-grow: 1;
+        }
+
+        .lesson-info h3 {
+            margin-bottom: 0.5rem;
+            color: var(--azul-escuro);
+        }
+
+        .lesson-duration {
+            display: inline-block;
+            background-color: var(--cinza-claro);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin-top: 0.5rem;
+            color: var(--cinza-escuro);
+        }
+
+        /* Modal e Formulários */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(5px);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background-color: var(--branco);
+            border-radius: 15px;
+            width: 90%;
+            max-width: 500px;
+            max-height: 90vh;
+            overflow-y: auto;
+            animation: slideIn 0.3s ease;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .modal-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid var(--cinza-claro);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: linear-gradient(135deg, var(--azul-principal), var(--azul-escuro));
+            color: var(--branco);
+            border-radius: 15px 15px 0 0;
+        }
+
+        .modal-header h2 {
+            margin-bottom: 0;
+            color: var(--branco);
+        }
+
+        .close-modal {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--branco);
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .close-modal:hover {
+            transform: rotate(90deg);
+        }
+
+        .modal-body {
+            padding: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--cinza-escuro);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 1px solid var(--cinza-medio);
+            border-radius: 8px;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--azul-principal);
+            box-shadow: 0 0 0 3px rgba(26, 86, 219, 0.1);
+        }
+
+        .form-control[readonly] {
+            background-color: var(--cinza-claro);
+            cursor: not-allowed;
+        }
+
+        .password-toggle {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: var(--cinza-medio);
+            cursor: pointer;
+        }
+
+        .password-container {
+            position: relative;
+        }
+
+        /* Painel Administrativo */
+        .admin-container {
+            display: flex;
+            min-height: calc(100vh - 80px);
+        }
+
+        .admin-sidebar {
+            width: 250px;
+            background: linear-gradient(180deg, var(--azul-escuro), var(--azul-principal));
+            color: var(--branco);
+            padding: 2rem 0;
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .admin-sidebar h3 {
+            padding: 0 1.5rem;
+            margin-bottom: 2rem;
+            color: var(--branco);
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .admin-menu {
+            list-style: none;
+        }
+
+        .admin-menu li {
+            margin-bottom: 0.5rem;
+        }
+
+        .admin-menu a {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 0.75rem 1.5rem;
+            color: var(--branco);
+            transition: all 0.3s;
+            opacity: 0.9;
+        }
+
+        .admin-menu a:hover, .admin-menu a.active {
+            background-color: rgba(255, 255, 255, 0.15);
+            opacity: 1;
+            padding-left: 2rem;
+        }
+
+        .admin-menu i {
+            width: 20px;
+            text-align: center;
+        }
+
+        .admin-content {
+            flex-grow: 1;
+            padding: 2rem;
+            background-color: var(--cinza-claro);
+        }
+
+        .admin-section {
+            background-color: var(--branco);
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(147, 197, 253, 0.3);
+        }
+
+        .admin-section h2 {
+            color: var(--azul-escuro);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--azul-claro);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Cards de Dashboard */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, var(--azul-claro), var(--azul-principal));
+            color: var(--branco);
+            padding: 1.5rem;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            box-shadow: 0 4px 12px rgba(26, 86, 219, 0.2);
+        }
+
+        .stat-card i {
+            font-size: 2.5rem;
+            opacity: 0.9;
+        }
+
+        .stat-info h3 {
+            font-size: 2rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .stat-info p {
+            opacity: 0.9;
+            font-size: 0.9rem;
+        }
+
+        /* Tabelas */
+        .table-responsive {
+            overflow-x: auto;
+            border-radius: 10px;
+            border: 1px solid var(--cinza-claro);
+        }
+
+        .table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+        }
+
+        .table th, .table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--cinza-claro);
+        }
+
+        .table th {
+            background-color: var(--azul-claro);
+            color: var(--azul-escuro);
+            font-weight: 600;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .table tr:hover {
+            background-color: rgba(147, 197, 253, 0.1);
+        }
+
+        .table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .badge-success {
+            background-color: #d1fae5;
+            color: var(--verde);
+        }
+
+        .badge-warning {
+            background-color: #fef3c7;
+            color: #f59e0b;
+        }
+
+        .badge-danger {
+            background-color: #fee2e2;
+            color: var(--vermelho);
+        }
+
+        .badge-info {
+            background-color: #dbeafe;
+            color: var(--azul-principal);
+        }
+
+        /* Alertas e Notificações */
+        .alert {
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .alert-success {
+            background-color: #d1fae5;
+            color: var(--verde);
+            border-left: 4px solid var(--verde);
+        }
+
+        .alert-error {
+            background-color: #fee2e2;
+            color: var(--vermelho);
+            border-left: 4px solid var(--vermelho);
+        }
+
+        .alert-info {
+            background-color: #dbeafe;
+            color: var(--azul-principal);
+            border-left: 4px solid var(--azul-principal);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--azul-escuro);
+            color: var(--branco);
+            padding: 3rem 0 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            color: var(--branco);
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-links a {
+            color: var(--azul-claro);
+            transition: color 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .footer-links a:hover {
+            color: var(--branco);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--azul-claro);
+            font-size: 0.9rem;
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: var(--branco);
+                flex-direction: column;
+                padding: 1rem 0;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+                animation: slideDown 0.3s ease;
+            }
+
+            @keyframes slideDown {
+                from {
+                    opacity: 0;
+                    transform: translateY(-10px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links li {
+                text-align: center;
+                padding: 0.5rem 0;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .admin-container {
+                flex-direction: column;
+            }
+
+            .admin-sidebar {
+                width: 100%;
+                padding: 1rem 0;
+            }
+
+            .admin-menu {
+                display: flex;
+                overflow-x: auto;
+                padding: 0 1rem;
+            }
+
+            .admin-menu li {
+                margin-bottom: 0;
+                margin-right: 1rem;
+                flex-shrink: 0;
+            }
+
+            .admin-menu a {
+                white-space: nowrap;
+                padding: 0.5rem 1rem;
+            }
+
+            .lesson-card {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .table {
+                font-size: 0.9rem;
+            }
+
+            .table th, .table td {
+                padding: 0.75rem 0.5rem;
+            }
+        }
+
+        /* Animações */
+        .fade-in {
+            animation: fadeIn 0.5s ease;
+        }
+
+        .slide-up {
+            animation: slideUp 0.5s ease;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Loader */
+        .loader {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            border: 3px solid var(--cinza-claro);
+            border-radius: 50%;
+            border-top-color: var(--azul-principal);
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--cinza-claro);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--azul-principal);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--azul-escuro);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header e Navegação -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="#" class="logo" onclick="showPage('home')">
+                    <i class="fas fa-square-root-alt"></i>
+                    <span>MATEMÁTICA FÁCIL</span>
+                </a>
+                
+                <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                    <i class="fas fa-bars"></i>
+                </button>
+                
+                <ul class="nav-links">
+                    <li><a href="#" onclick="showPage('home')"><i class="fas fa-home"></i> Início</a></li>
+                    <li><a href="#" onclick="showPage('courses')"><i class="fas fa-book"></i> Cursos</a></li>
+                    <li><a href="#" onclick="showPage('demo')"><i class="fas fa-play-circle"></i> Aulas Demo</a></li>
+                    <li><a href="#" onclick="showPage('admin-login')" id="admin-link"><i class="fas fa-lock"></i> Área Admin</a></li>
+                </ul>
+                
+                <div class="user-menu" id="user-menu">
+                    <!-- Menu dinâmico será preenchido via JavaScript -->
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Notificação Toast -->
+    <div id="toast" class="alert" style="display: none; position: fixed; top: 20px; right: 20px; z-index: 10000; max-width: 300px;"></div>
+
+    <!-- Páginas principais -->
+    <main id="page-content">
+        <!-- Página Inicial (Home) -->
+        <section id="home-page" class="page fade-in">
+            <div class="hero">
+                <div class="container hero-content">
+                    <h1>Domine a Matemática de Forma Simples e Prática</h1>
+                    <p>Aprenda matemática do básico ao avançado com nossa metodologia exclusiva. Cursos desenvolvidos por especialistas para você aprender no seu ritmo.</p>
+                    <div>
+                        <button class="btn btn-primary" onclick="showPage('courses')" style="margin-right: 10px;">
+                            <i class="fas fa-book-open"></i> Ver Cursos
+                        </button>
+                        <button class="btn btn-secondary" onclick="showPage('demo')">
+                            <i class="fas fa-play"></i> Aulas Grátis
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="features">
+                <div class="container">
+                    <div class="section-title">
+                        <h2>Por que estudar conosco?</h2>
+                        <p>Descubra os diferenciais que tornam nossa plataforma única</p>
+                    </div>
+                    <div class="features-grid">
+                        <div class="feature-card slide-up">
+                            <i class="fas fa-chalkboard-teacher"></i>
+                            <h3>Professores Especializados</h3>
+                            <p>Nossa equipe é formada por mestres e doutores com vasta experiência no ensino de matemática.</p>
+                        </div>
+                        <div class="feature-card slide-up" style="animation-delay: 0.1s;">
+                            <i class="fas fa-laptop-code"></i>
+                            <h3>Aulas 100% Online</h3>
+                            <p>Estude onde e quando quiser. Acesso vitalício aos cursos após a compra.</p>
+                        </div>
+                        <div class="feature-card slide-up" style="animation-delay: 0.2s;">
+                            <i class="fas fa-certificate"></i>
+                            <h3>Certificado Reconhecido</h3>
+                            <p>Emitimos certificado de conclusão com validade em todo território nacional.</p>
+                        </div>
+                        <div class="feature-card slide-up" style="animation-delay: 0.3s;">
+                            <i class="fas fa-headset"></i>
+                            <h3>Suporte Dedicado</h3>
+                            <p>Nossa equipe está sempre disponível para tirar suas dúvidas e ajudar no aprendizado.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Página de Cursos -->
+        <section id="courses-page" class="page" style="display: none;">
+            <div class="courses-header">
+                <div class="container">
+                    <h1>Nossos Cursos</h1>
+                    <p>Escolha o curso ideal para sua jornada matemática</p>
+                </div>
+            </div>
+            
+            <div class="container">
+                <div class="courses-grid" id="courses-list">
+                    <!-- Cursos serão carregados via JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Página de Aulas Demo -->
+        <section id="demo-page" class="page" style="display: none;">
+            <div class="demo-header">
+                <div class="container">
+                    <h1>Aulas Demonstração Grátis</h1>
+                    <p>Experimente nossa metodologia antes de comprar qualquer curso</p>
+                </div>
+            </div>
+            
+            <div class="container">
+                <div class="demo-lessons" id="demo-lessons">
+                    <!-- Aulas demo serão carregadas via JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Página de Login Admin -->
+        <section id="admin-login-page" class="page" style="display: none;">
+            <div class="container" style="min-height: 70vh; display: flex; align-items: center; justify-content: center;">
+                <div class="admin-section" style="max-width: 400px; width: 100%;">
+                    <h2 style="text-align: center; display: flex; align-items: center; justify-content: center; gap: 10px;">
+                        <i class="fas fa-lock"></i> Área do Administrador
+                    </h2>
+                    <div class="alert alert-info" style="margin-bottom: 1.5rem;">
+                        <i class="fas fa-info-circle"></i>
+                        <div>
+                            <strong>Credenciais de Demonstração</strong>
+                            <p style="margin-top: 5px; font-size: 0.9em;">Use as credenciais abaixo para acessar o painel administrativo.</p>
+                        </div>
+                    </div>
+                    <form id="admin-login-form">
+                        <div class="form-group">
+                            <label for="admin-email">E-mail:</label>
+                            <input type="email" id="admin-email" class="form-control" 
+                                   value="admin@matematicafacil.com" readonly 
+                                   style="background-color: var(--cinza-claro); color: var(--cinza-escuro);">
+                        </div>
+                        <div class="form-group">
+                            <label for="admin-password">Senha:</label>
+                            <div class="password-container">
+                                <input type="password" id="admin-password" class="form-control" 
+                                       value="admin123" required>
+                                <button type="button" class="password-toggle" onclick="togglePassword('admin-password')">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1rem;">
+                            <i class="fas fa-sign-in-alt"></i> Entrar no Painel
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Painel Administrativo -->
+        <section id="admin-panel" class="page" style="display: none;">
+            <div class="admin-container">
+                <div class="admin-sidebar">
+                    <h3><i class="fas fa-cogs"></i> Painel Admin</h3>
+                    <ul class="admin-menu">
+                        <li><a href="#" onclick="showAdminSection('dashboard')" class="active"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                        <li><a href="#" onclick="showAdminSection('courses')"><i class="fas fa-book"></i> Cursos</a></li>
+                        <li><a href="#" onclick="showAdminSection('students')"><i class="fas fa-users"></i> Alunos</a></li>
+                        <li><a href="#" onclick="showAdminSection('payments')"><i class="fas fa-credit-card"></i> Pagamentos</a></li>
+                        <li><a href="#" onclick="showAdminSection('leads')"><i class="fas fa-chart-line"></i> Leads</a></li>
+                        <li><a href="#" onclick="logoutAdmin()"><i class="fas fa-sign-out-alt"></i> Sair</a></li>
+                    </ul>
+                </div>
+                
+                <div class="admin-content">
+                    <!-- Dashboard -->
+                    <div id="admin-dashboard" class="admin-section">
+                        <h2><i class="fas fa-tachometer-alt"></i> Dashboard</h2>
+                        <div class="stats-grid" id="dashboard-stats">
+                            <!-- Estatísticas serão carregadas via JavaScript -->
+                        </div>
+                        
+                        <h3><i class="fas fa-history"></i> Últimos Pagamentos</h3>
+                        <div class="table-responsive">
+                            <table class="table" id="recent-payments">
+                                <thead>
+                                    <tr>
+                                        <th>Aluno</th>
+                                        <th>Curso</th>
+                                        <th>Valor</th>
+                                        <th>Data</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- Dados serão carregados via JavaScript -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    
+                    <!-- Gerenciar Cursos -->
+                    <div id="admin-courses" class="admin-section" style="display: none;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
+                            <h2 style="margin-bottom: 0;"><i class="fas fa-book"></i> Gerenciar Cursos</h2>
+                            <button class="btn btn-primary" onclick="showCourseModal()">
+                                <i class="fas fa-plus"></i> Novo Curso
+                            </button>
+                        </div>
+                        
+                        <div class="table-responsive">
+                            <table class="table" id="admin-courses-table">
+                                <thead>
+                                    <tr>
+                                        <th>Título</th>
+                                        <th>Valor</th>
+                                        <th>Status</th>
+                                        <th>Ações</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- Cursos serão carregados via JavaScript -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    
+                    <!-- Alunos -->
+                    <div id="admin-students" class="admin-section" style="display: none;">
+                        <h2><i class="fas fa-users"></i> Alunos Cadastrados</h2>
+                        <div class="table-responsive">
+                            <table class="table" id="admin-students-table">
+                                <thead>
+                                    <tr>
+                                        <th>Nome</th>
+                                        <th>E-mail</th>
+                                        <th>Data de Cadastro</th>
+                                        <th>Cursos Comprados</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- Alunos serão carregados via JavaScript -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    
+                    <!-- Pagamentos -->
+                    <div id="admin-payments" class="admin-section" style="display: none;">
+                        <h2><i class="fas fa-credit-card"></i> Pagamentos</h2>
+                        <div class="table-responsive">
+                            <table class="table" id="admin-payments-table">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Aluno</th>
+                                        <th>Curso</th>
+                                        <th>Valor</th>
+                                        <th>Data</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- Pagamentos serão carregados via JavaScript -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    
+                    <!-- Leads -->
+                    <div id="admin-leads" class="admin-section" style="display: none;">
+                        <h2><i class="fas fa-chart-line"></i> Leads - Aulas Demo</h2>
+                        <div class="table-responsive">
+                            <table class="table" id="admin-leads-table">
+                                <thead>
+                                    <tr>
+                                        <th>Nome</th>
+                                        <th>E-mail</th>
+                                        <th>Data de Cadastro</th>
+                                        <th>Aulas Visualizadas</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- Leads serão carregados via JavaScript -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modal de Login -->
+    <div id="login-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2><i class="fas fa-sign-in-alt"></i> Entrar na Plataforma</h2>
+                <button class="close-modal" onclick="closeModal('login-modal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="login-form">
+                    <div class="form-group">
+                        <label for="login-email">E-mail:</label>
+                        <input type="email" id="login-email" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="login-password">Senha:</label>
+                        <div class="password-container">
+                            <input type="password" id="login-password" class="form-control" required>
+                            <button type="button" class="password-toggle" onclick="togglePassword('login-password')">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%; margin-bottom: 1rem;">
+                        <i class="fas fa-sign-in-alt"></i> Entrar
+                    </button>
+                    <p style="text-align: center;">Não tem uma conta? <a href="#" onclick="closeModal('login-modal'); showRegisterModal();" style="color: var(--azul-principal); font-weight: 600;">Cadastre-se</a></p>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Cadastro -->
+    <div id="register-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2><i class="fas fa-user-plus"></i> Criar Conta</h2>
+                <button class="close-modal" onclick="closeModal('register-modal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="register-form">
+                    <div class="form-group">
+                        <label for="register-name">Nome Completo:</label>
+                        <input type="text" id="register-name" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="register-email">E-mail:</label>
+                        <input type="email" id="register-email" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="register-password">Senha:</label>
+                        <div class="password-container">
+                            <input type="password" id="register-password" class="form-control" required>
+                            <button type="button" class="password-toggle" onclick="togglePassword('register-password')">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="register-confirm-password">Confirmar Senha:</label>
+                        <div class="password-container">
+                            <input type="password" id="register-confirm-password" class="form-control" required>
+                            <button type="button" class="password-toggle" onclick="togglePassword('register-confirm-password')">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%; margin-bottom: 1rem;">
+                        <i class="fas fa-user-plus"></i> Criar Conta
+                    </button>
+                    <p style="text-align: center;">Já tem uma conta? <a href="#" onclick="closeModal('register-modal'); showLoginModal();" style="color: var(--azul-principal); font-weight: 600;">Faça login</a></p>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Cadastro para Aulas Demo -->
+    <div id="demo-register-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2><i class="fas fa-play-circle"></i> Acesso às Aulas Demo</h2>
+                <button class="close-modal" onclick="closeModal('demo-register-modal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p style="margin-bottom: 1.5rem;">Cadastre-se gratuitamente para acessar as aulas demonstrativas.</p>
+                <form id="demo-register-form">
+                    <div class="form-group">
+                        <label for="demo-register-name">Nome:</label>
+                        <input type="text" id="demo-register-name" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="demo-register-email">E-mail:</label>
+                        <input type="email" id="demo-register-email" class="form-control" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">
+                        <i class="fas fa-play"></i> Acessar Aulas Demo
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Pagamento -->
+    <div id="payment-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2><i class="fas fa-shopping-cart"></i> Finalizar Compra</h2>
+                <button class="close-modal" onclick="closeModal('payment-modal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div id="payment-course-info" style="margin-bottom: 1.5rem;"></div>
+                <form id="payment-form">
+                    <div class="form-group">
+                        <label for="payment-name">Nome no Cartão:</label>
+                        <input type="text" id="payment-name" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="payment-card">Número do Cartão:</label>
+                        <input type="text" id="payment-card" class="form-control" placeholder="1234 5678 9012 3456" required>
+                    </div>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                        <div class="form-group">
+                            <label for="payment-expiry">Validade:</label>
+                            <input type="text" id="payment-expiry" class="form-control" placeholder="MM/AA" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="payment-cvv">CVV:</label>
+                            <input type="text" id="payment-cvv" class="form-control" placeholder="123" required>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-success" style="width: 100%;">
+                        <i class="fas fa-credit-card"></i> Pagar Agora
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Gerenciar Curso -->
+    <div id="course-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="course-modal-title"><i class="fas fa-book"></i> Novo Curso</h2>
+                <button class="close-modal" onclick="closeModal('course-modal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="course-form">
+                    <input type="hidden" id="course-id">
+                    <div class="form-group">
+                        <label for="course-title">Título do Curso:</label>
+                        <input type="text" id="course-title" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="course-description">Descrição:</label>
+                        <textarea id="course-description" class="form-control" rows="4" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="course-price">Valor (R$):</label>
+                        <input type="number" id="course-price" class="form-control" step="0.01" min="0" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="course-link">Link de Acesso:</label>
+                        <input type="text" id="course-link" class="form-control" placeholder="https://...">
+                    </div>
+                    <div class="form-group">
+                        <label for="course-password">Senha de Acesso:</label>
+                        <div class="password-container">
+                            <input type="text" id="course-password" class="form-control">
+                            <button type="button" class="password-toggle" onclick="togglePassword('course-password')">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="course-status">Status:</label>
+                        <select id="course-status" class="form-control">
+                            <option value="active">Ativo</option>
+                            <option value="inactive">Inativo</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">
+                        <i class="fas fa-save"></i> Salvar Curso
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>MATEMÁTICA FÁCIL</h3>
+                    <p>Transformando o aprendizado de matemática através de uma metodologia inovadora e acessível.</p>
+                    <div style="margin-top: 1rem; display: flex; gap: 1rem;">
+                        <a href="#" style="color: var(--branco);"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" style="color: var(--branco);"><i class="fab fa-instagram"></i></a>
+                        <a href="#" style="color: var(--branco);"><i class="fab fa-youtube"></i></a>
+                        <a href="#" style="color: var(--branco);"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Cursos</h3>
+                    <ul class="footer-links">
+                        <li><a href="#" onclick="showPage('courses')"><i class="fas fa-calculator"></i> Matemática Básica</a></li>
+                        <li><a href="#" onclick="showPage('courses')"><i class="fas fa-superscript"></i> Álgebra</a></li>
+                        <li><a href="#" onclick="showPage('courses')"><i class="fas fa-shapes"></i> Geometria</a></li>
+                        <li><a href="#" onclick="showPage('courses')"><i class="fas fa-chart-line"></i> Cálculo</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contato</h3>
+                    <ul class="footer-links">
+                        <li><a href="mailto:contato@matematicafacil.com"><i class="fas fa-envelope"></i> contato@matematicafacil.com</a></li>
+                        <li><a href="tel:+5511999999999"><i class="fas fa-phone"></i> (11) 99999-9999</a></li>
+                        <li><a href="#"><i class="fas fa-map-marker-alt"></i> São Paulo, SP</a></li>
+                        <li><a href="#" onclick="showPage('demo')"><i class="fas fa-question-circle"></i> Ajuda e Suporte</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 MATEMÁTICA FÁCIL. Todos os direitos reservados.</p>
+                <p style="margin-top: 0.5rem; font-size: 0.8em;">Plataforma desenvolvida para ensino de matemática online</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // ==================== BANCO DE DADOS SIMULADO ====================
+        class Database {
+            constructor() {
+                this.initDatabase();
+            }
+
+            initDatabase() {
+                // Admin padrão
+                if (!localStorage.getItem('matematica_facil_admin')) {
+                    localStorage.setItem('matematica_facil_admin', JSON.stringify({
+                        email: 'admin@matematicafacil.com',
+                        password: 'admin123',
+                        name: 'Administrador'
+                    }));
+                }
+
+                // Cursos iniciais
+                if (!localStorage.getItem('matematica_facil_cursos')) {
+                    localStorage.setItem('matematica_facil_cursos', JSON.stringify([
+                        {
+                            id: 1,
+                            title: 'Matemática Básica',
+                            description: 'Aprenda os fundamentos da matemática do zero. Este curso cobre operações básicas, frações, porcentagens, regra de três e muito mais. Ideal para quem precisa reforçar os conceitos fundamentais.',
+                            price: 199.99,
+                            link: 'https://meet.google.com/abc-defg-hij',
+                            password: 'math123',
+                            status: 'active',
+                            createdAt: new Date().toISOString(),
+                            updatedAt: new Date().toISOString(),
+                            duration: '40 horas',
+                            level: 'Iniciante',
+                            rating: 4.8
+                        },
+                        {
+                            id: 2,
+                            title: 'Álgebra Linear',
+                            description: 'Domine vetores, matrizes e transformações lineares. Curso essencial para estudantes de exatas que precisam entender os conceitos fundamentais da álgebra moderna.',
+                            price: 299.99,
+                            link: 'https://meet.google.com/klm-nopq-rst',
+                            password: 'algebra456',
+                            status: 'active',
+                            createdAt: new Date().toISOString(),
+                            updatedAt: new Date().toISOString(),
+                            duration: '60 horas',
+                            level: 'Intermediário',
+                            rating: 4.9
+                        },
+                        {
+                            id: 3,
+                            title: 'Cálculo Diferencial',
+                            description: 'Entenda limites, derivadas e suas aplicações práticas. Ideal para quem está na faculdade ou precisa dominar conceitos de cálculo para concursos.',
+                            price: 349.99,
+                            link: 'https://meet.google.com/uvw-xyz-123',
+                            password: 'calculo789',
+                            status: 'active',
+                            createdAt: new Date().toISOString(),
+                            updatedAt: new Date().toISOString(),
+                            duration: '80 horas',
+                            level: 'Avançado',
+                            rating: 4.7
+                        },
+                        {
+                            id: 4,
+                            title: 'Matemática Financeira',
+                            description: 'Aplicações práticas para seu dia a dia. Aprenda juros, investimentos, amortização e planejamento financeiro pessoal e empresarial.',
+                            price: 249.99,
+                            link: 'https://meet.google.com/456-789-012',
+                            password: 'financeira321',
+                            status: 'active',
+                            createdAt: new Date().toISOString(),
+                            updatedAt: new Date().toISOString(),
+                            duration: '30 horas',
+                            level: 'Intermediário',
+                            rating: 4.9
+                        }
+                    ]));
+                }
+
+                // Aulas demo iniciais
+                if (!localStorage.getItem('matematica_facil_demo_lessons')) {
+                    localStorage.setItem('matematica_facil_demo_lessons', JSON.stringify([
+                        {
+                            id: 1,
+                            title: 'Introdução à Matemática',
+                            description: 'Aula introdutória sobre conceitos básicos de matemática. Entenda a importância dos números, operações fundamentais e como aplicar no dia a dia.',
+                            videoUrl: '#',
+                            duration: '15 min',
+                            order: 1,
+                            published: true
+                        },
+                        {
+                            id: 2,
+                            title: 'Resolução de Equações',
+                            description: 'Aprenda a resolver equações de primeiro grau passo a passo. Método simples e eficaz para dominar um dos conceitos mais importantes da matemática.',
+                            videoUrl: '#',
+                            duration: '20 min',
+                            order: 2,
+                            published: true
+                        },
+                        {
+                            id: 3,
+                            title: 'Geometria Básica',
+                            description: 'Conceitos fundamentais de geometria. Áreas, perímetros, volumes e propriedades das principais figuras geométricas planas e espaciais.',
+                            videoUrl: '#',
+                            duration: '18 min',
+                            order: 3,
+                            published: true
+                        },
+                        {
+                            id: 4,
+                            title: 'Introdução à Trigonometria',
+                            description: 'Conheça as relações trigonométricas básicas e suas aplicações práticas. Seno, cosseno, tangente e resolução de triângulos.',
+                            videoUrl: '#',
+                            duration: '22 min',
+                            order: 4,
+                            published: true
+                        }
+                    ]));
+                }
+
+                // Inicializar outras tabelas
+                if (!localStorage.getItem('matematica_facil_alunos')) {
+                    localStorage.setItem('matematica_facil_alunos', JSON.stringify([]));
+                }
+                if (!localStorage.getItem('matematica_facil_pagamentos')) {
+                    localStorage.setItem('matematica_facil_pagamentos', JSON.stringify([]));
+                }
+                if (!localStorage.getItem('matematica_facil_leads')) {
+                    localStorage.setItem('matematica_facil_leads', JSON.stringify([]));
+                }
+                if (!localStorage.getItem('matematica_facil_current_user')) {
+                    localStorage.setItem('matematica_facil_current_user', JSON.stringify(null));
+                }
+                if (!localStorage.getItem('matematica_facil_admin_logged_in')) {
+                    localStorage.setItem('matematica_facil_admin_logged_in', JSON.stringify(false));
+                }
+            }
+
+            // ==================== GETTERS ====================
+            getCourses() {
+                return JSON.parse(localStorage.getItem('matematica_facil_cursos') || '[]');
+            }
+
+            getDemoLessons() {
+                return JSON.parse(localStorage.getItem('matematica_facil_demo_lessons') || '[]');
+            }
+
+            getStudents() {
+                return JSON.parse(localStorage.getItem('matematica_facil_alunos') || '[]');
+            }
+
+            getPayments() {
+                return JSON.parse(localStorage.getItem('matematica_facil_pagamentos') || '[]');
+            }
+
+            getLeads() {
+                return JSON.parse(localStorage.getItem('matematica_facil_leads') || '[]');
+            }
+
+            getAdmin() {
+                return JSON.parse(localStorage.getItem('matematica_facil_admin') || '{}');
+            }
+
+            getCurrentUser() {
+                return JSON.parse(localStorage.getItem('matematica_facil_current_user') || 'null');
+            }
+
+            isAdminLoggedIn() {
+                return JSON.parse(localStorage.getItem('matematica_facil_admin_logged_in') || 'false');
+            }
+
+            // ==================== SETTERS ====================
+            saveCourses(courses) {
+                localStorage.setItem('matematica_facil_cursos', JSON.stringify(courses));
+            }
+
+            saveStudents(students) {
+                localStorage.setItem('matematica_facil_alunos', JSON.stringify(students));
+            }
+
+            savePayments(payments) {
+                localStorage.setItem('matematica_facil_pagamentos', JSON.stringify(payments));
+            }
+
+            saveLeads(leads) {
+                localStorage.setItem('matematica_facil_leads', JSON.stringify(leads));
+            }
+
+            setCurrentUser(user) {
+                localStorage.setItem('matematica_facil_current_user', JSON.stringify(user));
+            }
+
+            setAdminLoggedIn(status) {
+                localStorage.setItem('matematica_facil_admin_logged_in', JSON.stringify(status));
+            }
+
+            // ==================== UTILS ====================
+            getNextId(array) {
+                if (array.length === 0) return 1;
+                return Math.max(...array.map(item => item.id || 0)) + 1;
+            }
+
+            formatCurrency(value) {
+                return new Intl.NumberFormat('pt-BR', {
+                    style: 'currency',
+                    currency: 'BRL'
+                }).format(value);
+            }
+
+            formatDate(dateString) {
+                const date = new Date(dateString);
+                return date.toLocaleDateString('pt-BR', {
+                    day: '2-digit',
+                    month: '2-digit',
+                    year: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit'
+                });
+            }
+
+            getStatusBadge(status) {
+                switch(status) {
+                    case 'active':
+                    case 'approved':
+                        return '<span class="badge badge-success">Ativo</span>';
+                    case 'inactive':
+                        return '<span class="badge badge-danger">Inativo</span>';
+                    case 'pending':
+                        return '<span class="badge badge-warning">Pendente</span>';
+                    default:
+                        return '<span class="badge badge-info">' + status + '</span>';
+                }
+            }
+        }
+
+        // ==================== APLICAÇÃO ====================
+        const db = new Database();
+        
+        const appState = {
+            currentPage: 'home',
+            currentAdminSection: 'dashboard',
+            currentUser: db.getCurrentUser(),
+            adminLoggedIn: db.isAdminLoggedIn(),
+            selectedCourseForPayment: null,
+            editingCourseId: null
+        };
+
+        // ==================== INICIALIZAÇÃO ====================
+        document.addEventListener('DOMContentLoaded', function() {
+            initApplication();
+            setupEventListeners();
+            updateUIForUser();
+            
+            // Se admin já está logado, mostrar painel admin
+            if (appState.adminLoggedIn) {
+                showPage('admin-panel');
+            }
+        });
+
+        function initApplication() {
+            loadCoursesPage();
+            loadDemoLessonsPage();
+        }
+
+        function setupEventListeners() {
+            // Formulários
+            document.getElementById('login-form').addEventListener('submit', handleLogin);
+            document.getElementById('register-form').addEventListener('submit', handleRegister);
+            document.getElementById('admin-login-form').addEventListener('submit', handleAdminLogin);
+            document.getElementById('demo-register-form').addEventListener('submit', handleDemoRegister);
+            document.getElementById('payment-form').addEventListener('submit', handlePayment);
+            document.getElementById('course-form').addEventListener('submit', handleCourseSave);
+            
+            // Fechar modais ao clicar fora
+            document.querySelectorAll('.modal').forEach(modal => {
+                modal.addEventListener('click', function(e) {
+                    if (e.target === this) {
+                        this.classList.remove('active');
+                    }
+                });
+            });
+        }
+
+        // ==================== NAVEGAÇÃO ====================
+        function showPage(pageId) {
+            // Esconder todas as páginas
+            document.querySelectorAll('.page').forEach(page => {
+                page.style.display = 'none';
+            });
+            
+            // Mostrar a página solicitada
+            const pageElement = document.getElementById(pageId + '-page');
+            if (pageElement) {
+                pageElement.style.display = 'block';
+                pageElement.classList.add('fade-in');
+            }
+            
+            appState.currentPage = pageId;
+            
+            // Atualizar UI baseado na página
+            if (pageId === 'courses') {
+                loadCoursesPage();
+            } else if (pageId === 'demo') {
+                loadDemoLessonsPage();
+            } else if (pageId === 'admin-panel') {
+                loadAdminDashboard();
+            }
+            
+            // Fechar menu mobile se aberto
+            document.querySelector('.nav-links').classList.remove('active');
+            
+            // Scroll para o topo
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            
+            return false;
+        }
+
+        function toggleMobileMenu() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        }
+
+        // ==================== MODAIS ====================
+        function showLoginModal() {
+            if (appState.currentUser) {
+                showToast('Você já está logado!', 'info');
+                return;
+            }
+            document.getElementById('login-modal').classList.add('active');
+        }
+
+        function showRegisterModal() {
+            if (appState.currentUser) {
+                showToast('Você já está logado!', 'info');
+                return;
+            }
+            document.getElementById('register-modal').classList.add('active');
+        }
+
+        function showDemoRegisterModal() {
+            document.getElementById('demo-register-modal').classList.add('active');
+        }
+
+        function showPaymentModal(courseId) {
+            const courses = db.getCourses();
+            const course = courses.find(c => c.id === courseId);
+            
+            if (!course) {
+                showToast('Curso não encontrado!', 'error');
+                return;
+            }
+            
+            if (!appState.currentUser) {
+                closeModal('payment-modal');
+                showLoginModal();
+                showToast('Faça login para continuar com a compra', 'info');
+                return;
+            }
+            
+            appState.selectedCourseForPayment = course;
+            
+            document.getElementById('payment-course-info').innerHTML = `
+                <div style="background-color: var(--cinza-claro); padding: 1rem; border-radius: 8px; margin-bottom: 1rem;">
+                    <h3 style="margin-bottom: 0.5rem; color: var(--azul-escuro);">${course.title}</h3>
+                    <p style="color: var(--cinza-medio); margin-bottom: 0.5rem;">${course.description.substring(0, 100)}...</p>
+                    <p style="font-size: 1.25rem; font-weight: 700; color: var(--azul-principal);">${db.formatCurrency(course.price)}</p>
+                </div>
+            `;
+            
+            document.getElementById('payment-modal').classList.add('active');
+        }
+
+        function showCourseModal(courseId = null) {
+            const modal = document.getElementById('course-modal');
+            const title = document.getElementById('course-modal-title');
+            const form = document.getElementById('course-form');
+            
+            if (courseId) {
+                // Modo edição
+                title.innerHTML = '<i class="fas fa-edit"></i> Editar Curso';
+                appState.editingCourseId = courseId;
+                
+                const courses = db.getCourses();
+                const course = courses.find(c => c.id === courseId);
+                
+                if (course) {
+                    document.getElementById('course-id').value = course.id;
+                    document.getElementById('course-title').value = course.title;
+                    document.getElementById('course-description').value = course.description;
+                    document.getElementById('course-price').value = course.price;
+                    document.getElementById('course-link').value = course.link || '';
+                    document.getElementById('course-password').value = course.password || '';
+                    document.getElementById('course-status').value = course.status;
+                }
+            } else {
+                // Modo criação
+                title.innerHTML = '<i class="fas fa-plus"></i> Novo Curso';
+                appState.editingCourseId = null;
+                form.reset();
+                document.getElementById('course-status').value = 'active';
+            }
+            
+            modal.classList.add('active');
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.remove('active');
+        }
+
+        function togglePassword(inputId) {
+            const input = document.getElementById(inputId);
+            const button = input.parentNode.querySelector('.password-toggle i');
+            
+            if (input.type === 'password') {
+                input.type = 'text';
+                button.classList.remove('fa-eye');
+                button.classList.add('fa-eye-slash');
+            } else {
+                input.type = 'password';
+                button.classList.remove('fa-eye-slash');
+                button.classList.add('fa-eye');
+            }
+        }
+
+        // ==================== PÁGINAS PÚBLICAS ====================
+        function loadCoursesPage() {
+            const courses = db.getCourses();
+            const coursesList = document.getElementById('courses-list');
+            
+            if (courses.length === 0) {
+                coursesList.innerHTML = `
+                    <div style="text-align: center; grid-column: 1 / -1; padding: 3rem;">
+                        <i class="fas fa-book" style="font-size: 3rem; color: var(--cinza-medio); margin-bottom: 1rem;"></i>
+                        <h3 style="color: var(--cinza-escuro);">Nenhum curso disponível no momento.</h3>
+                        <p style="color: var(--cinza-medio);">Volte em breve para conhecer nossos novos cursos.</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            coursesList.innerHTML = courses
+                .filter(course => course.status === 'active')
+                .map(course => `
+                    <div class="course-card">
+                        <div class="course-image">
+                            <div class="course-badge">${course.level}</div>
+                            <i class="fas fa-calculator"></i>
+                        </div>
+                        <div class="course-content">
+                            <h3>${course.title}</h3>
+                            <p class="course-description">${course.description.substring(0, 120)}...</p>
+                            <div class="course-meta">
+                                <div class="course-price">${db.formatCurrency(course.price)}</div>
+                                <div class="course-rating">
+                                    <i class="fas fa-star"></i> ${course.rating}
+                                </div>
+                            </div>
+                            <div class="course-actions">
+                                <button class="btn btn-primary" style="flex-grow: 1;" onclick="showPaymentModal(${course.id})">
+                                    <i class="fas fa-shopping-cart"></i> Comprar Agora
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `).join('');
+        }
+
+        function loadDemoLessonsPage() {
+            const demoLessons = db.getDemoLessons();
+            const demoContainer = document.getElementById('demo-lessons');
+            
+            if (demoLessons.length === 0) {
+                demoContainer.innerHTML = `
+                    <div style="text-align: center; padding: 3rem;">
+                        <i class="fas fa-play-circle" style="font-size: 3rem; color: var(--cinza-medio); margin-bottom: 1rem;"></i>
+                        <h3 style="color: var(--cinza-escuro);">Nenhuma aula demonstrativa disponível.</h3>
+                    </div>
+                `;
+                return;
+            }
+            
+            demoContainer.innerHTML = demoLessons
+                .filter(lesson => lesson.published)
+                .map(lesson => `
+                    <div class="lesson-card">
+                        <div class="lesson-icon">
+                            <i class="fas fa-play"></i>
+                        </div>
+                        <div class="lesson-info">
+                            <h3>${lesson.title}</h3>
+                            <p>${lesson.description}</p>
+                            <span class="lesson-duration">
+                                <i class="far fa-clock"></i> ${lesson.duration}
+                            </span>
+                            <div style="margin-top: 1rem;">
+                                <button class="btn btn-secondary" onclick="accessDemoLesson(${lesson.id})">
+                                    <i class="fas fa-play"></i> Assistir Aula
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `).join('');
+        }
+
+        function accessDemoLesson(lessonId) {
+            if (!appState.currentUser) {
+                showDemoRegisterModal();
+            } else {
+                showToast('Redirecionando para a aula demonstrativa...', 'info');
+                // Simular acesso à aula
+                setTimeout(() => {
+                    showToast('Acesso liberado! Assista quantas vezes quiser.', 'success');
+                }, 1000);
+            }
+        }
+
+        // ==================== PAINEL ADMINISTRATIVO ====================
+        function showAdminSection(sectionId) {
+            // Esconder todas as seções
+            document.querySelectorAll('.admin-section').forEach(section => {
+                section.style.display = 'none';
+            });
+            
+            // Mostrar a seção solicitada
+            document.getElementById('admin-' + sectionId).style.display = 'block';
+            
+            // Atualizar menu ativo
+            document.querySelectorAll('.admin-menu a').forEach(link => {
+                link.classList.remove('active');
+            });
+            document.querySelector(`.admin-menu a[onclick*="${sectionId}"]`).classList.add('active');
+            
+            // Carregar dados da seção
+            switch(sectionId) {
+                case 'dashboard':
+                    loadAdminDashboard();
+                    break;
+                case 'courses':
+                    loadAdminCourses();
+                    break;
+                case 'students':
+                    loadAdminStudents();
+                    break;
+                case 'payments':
+                    loadAdminPayments();
+                    break;
+                case 'leads':
+                    loadAdminLeads();
+                    break;
+            }
+            
+            appState.currentAdminSection = sectionId;
+        }
+
+        function loadAdminDashboard() {
+            const courses = db.getCourses();
+            const students = db.getStudents();
+            const leads = db.getLeads();
+            const payments = db.getPayments();
+            
+            // Calcular estatísticas
+            const totalCourses = courses.length;
+            const totalStudents = students.length;
+            const totalLeads = leads.length;
+            const totalRevenue = payments
+                .filter(p => p.status === 'approved')
+                .reduce((sum, p) => sum + p.amount, 0);
+            
+            // Atualizar cards de estatísticas
+            document.getElementById('dashboard-stats').innerHTML = `
+                <div class="stat-card">
+                    <i class="fas fa-book"></i>
+                    <div class="stat-info">
+                        <h3>${totalCourses}</h3>
+                        <p>Cursos Ativos</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-users"></i>
+                    <div class="stat-info">
+                        <h3>${totalStudents}</h3>
+                        <p>Alunos Cadastrados</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-chart-line"></i>
+                    <div class="stat-info">
+                        <h3>${totalLeads}</h3>
+                        <p>Leads Captados</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-money-bill-wave"></i>
+                    <div class="stat-info">
+                        <h3>${db.formatCurrency(totalRevenue)}</h3>
+                        <p>Faturamento Total</p>
+                    </div>
+                </div>
+            `;
+            
+            // Atualizar tabela de pagamentos recentes
+            const recentPaymentsTable = document.querySelector('#recent-payments tbody');
+            const recentPayments = payments.slice(-5).reverse();
+            
+            recentPaymentsTable.innerHTML = recentPayments.map(payment => {
+                const student = students.find(s => s.id === payment.studentId);
+                const course = courses.find(c => c.id === payment.courseId);
+                
+                return `
+                    <tr>
+                        <td>${student ? student.name : 'N/A'}</td>
+                        <td>${course ? course.title : 'N/A'}</td>
+                        <td>${db.formatCurrency(payment.amount)}</td>
+                        <td>${db.formatDate(payment.date)}</td>
+                        <td>${db.getStatusBadge(payment.status)}</td>
+                    </tr>
+                `;
+            }).join('');
+        }
+
+        function loadAdminCourses() {
+            const courses = db.getCourses();
+            const tableBody = document.querySelector('#admin-courses-table tbody');
+            
+            tableBody.innerHTML = courses.map(course => `
+                <tr>
+                    <td>
+                        <strong>${course.title}</strong><br>
+                        <small style="color: var(--cinza-medio);">${course.level} • ${course.duration}</small>
+                    </td>
+                    <td>${db.formatCurrency(course.price)}</td>
+                    <td>${db.getStatusBadge(course.status)}</td>
+                    <td>
+                        <button class="btn btn-sm btn-secondary" onclick="showCourseModal(${course.id})" style="margin-right: 0.5rem;">
+                            <i class="fas fa-edit"></i>
+                        </button>
+                        <button class="btn btn-sm btn-danger" onclick="deleteCourse(${course.id})" ${courses.length <= 1 ? 'disabled' : ''}>
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        function loadAdminStudents() {
+            const students = db.getStudents();
+            const courses = db.getCourses();
+            const payments = db.getPayments();
+            
+            const tableBody = document.querySelector('#admin-students-table tbody');
+            
+            tableBody.innerHTML = students.map(student => {
+                const studentPayments = payments.filter(p => 
+                    p.studentId === student.id && p.status === 'approved'
+                );
+                const coursesCount = studentPayments.length;
+                
+                return `
+                    <tr>
+                        <td>${student.name}</td>
+                        <td>${student.email}</td>
+                        <td>${db.formatDate(student.createdAt)}</td>
+                        <td>
+                            <span class="badge badge-info">${coursesCount} curso(s)</span>
+                        </td>
+                    </tr>
+                `;
+            }).join('');
+        }
+
+        function loadAdminPayments() {
+            const payments = db.getPayments();
+            const students = db.getStudents();
+            const courses = db.getCourses();
+            
+            const tableBody = document.querySelector('#admin-payments-table tbody');
+            
+            tableBody.innerHTML = payments.map(payment => {
+                const student = students.find(s => s.id === payment.studentId);
+                const course = courses.find(c => c.id === payment.courseId);
+                
+                return `
+                    <tr>
+                        <td>#${payment.id.toString().padStart(3, '0')}</td>
+                        <td>${student ? student.name : 'N/A'}</td>
+                        <td>${course ? course.title : 'N/A'}</td>
+                        <td>${db.formatCurrency(payment.amount)}</td>
+                        <td>${db.formatDate(payment.date)}</td>
+                        <td>${db.getStatusBadge(payment.status)}</td>
+                    </tr>
+                `;
+            }).reverse().join('');
+        }
+
+        function loadAdminLeads() {
+            const leads = db.getLeads();
+            const tableBody = document.querySelector('#admin-leads-table tbody');
+            
+            tableBody.innerHTML = leads.map(lead => `
+                <tr>
+                    <td>${lead.name}</td>
+                    <td>${lead.email}</td>
+                    <td>${db.formatDate(lead.createdAt)}</td>
+                    <td>${lead.lessonsViewed || 0}</td>
+                </tr>
+            `).reverse().join('');
+        }
+
+        function deleteCourse(courseId) {
+            if (!confirm('Tem certeza que deseja excluir este curso?\n\nEsta ação não pode ser desfeita.')) {
+                return;
+            }
+            
+            const courses = db.getCourses();
+            
+            // Não permitir excluir todos os cursos
+            if (courses.length <= 1) {
+                showToast('Não é possível excluir o único curso disponível.', 'error');
+                return;
+            }
+            
+            const updatedCourses = courses.filter(course => course.id !== courseId);
+            db.saveCourses(updatedCourses);
+            
+            loadAdminCourses();
+            loadCoursesPage();
+            showToast('Curso excluído com sucesso!', 'success');
+        }
+
+        // ==================== AUTENTICAÇÃO E USUÁRIOS ====================
+        function handleLogin(e) {
+            e.preventDefault();
+            
+            const email = document.getElementById('login-email').value;
+            const password = document.getElementById('login-password').value;
+            
+            const students = db.getStudents();
+            const student = students.find(s => s.email === email && s.password === password);
+            
+            if (student) {
+                appState.currentUser = {
+                    id: student.id,
+                    name: student.name,
+                    email: student.email,
+                    type: 'student'
+                };
+                db.setCurrentUser(appState.currentUser);
+                
+                updateUIForUser();
+                closeModal('login-modal');
+                showToast(`Bem-vindo(a), ${student.name}!`, 'success');
+            } else {
+                showToast('E-mail ou senha incorretos!', 'error');
+            }
+        }
+
+        function handleRegister(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('register-name').value;
+            const email = document.getElementById('register-email').value;
+            const password = document.getElementById('register-password').value;
+            const confirmPassword = document.getElementById('register-confirm-password').value;
+            
+            // Validações
+            if (password !== confirmPassword) {
+                showToast('As senhas não coincidem!', 'error');
+                return;
+            }
+            
+            if (password.length < 6) {
+                showToast('A senha deve ter pelo menos 6 caracteres', 'error');
+                return;
+            }
+            
+            const students = db.getStudents();
+            
+            // Verificar se email já está cadastrado
+            if (students.some(s => s.email === email)) {
+                showToast('Este e-mail já está cadastrado!', 'error');
+                return;
+            }
+            
+            // Criar novo aluno
+            const newStudent = {
+                id: db.getNextId(students),
+                name: name,
+                email: email,
+                password: password,
+                createdAt: new Date().toISOString(),
+                purchasedCourses: []
+            };
+            
+            students.push(newStudent);
+            db.saveStudents(students);
+            
+            appState.currentUser = {
+                id: newStudent.id,
+                name: newStudent.name,
+                email: newStudent.email,
+                type: 'student'
+            };
+            db.setCurrentUser(appState.currentUser);
+            
+            updateUIForUser();
+            closeModal('register-modal');
+            showToast(`Cadastro realizado com sucesso! Bem-vindo(a), ${name}!`, 'success');
+        }
+
+        function handleAdminLogin(e) {
+            e.preventDefault();
+            
+            const email = document.getElementById('admin-email').value;
+            const password = document.getElementById('admin-password').value;
+            const admin = db.getAdmin();
+            
+            if (email === admin.email && password === admin.password) {
+                // Login bem-sucedido
+                appState.adminLoggedIn = true;
+                appState.currentUser = {
+                    email: admin.email,
+                    name: admin.name,
+                    type: 'admin'
+                };
+                
+                db.setAdminLoggedIn(true);
+                db.setCurrentUser(appState.currentUser);
+                
+                // Redirecionar para o painel admin
+                showPage('admin-panel');
+                showToast(`Bem-vindo, ${admin.name}!`, 'success');
+                
+                // Carregar dashboard
+                setTimeout(() => {
+                    loadAdminDashboard();
+                }, 500);
+            } else {
+                showToast('E-mail ou senha incorretos!', 'error');
+            }
+        }
+
+        function handleDemoRegister(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('demo-register-name').value;
+            const email = document.getElementById('demo-register-email').value;
+            
+            const leads = db.getLeads();
+            
+            // Verificar se lead já existe
+            let lead = leads.find(l => l.email === email);
+            
+            if (!lead) {
+                // Criar novo lead
+                lead = {
+                    id: db.getNextId(leads),
+                    name: name,
+                    email: email,
+                    createdAt: new Date().toISOString(),
+                    lessonsViewed: 0
+                };
+                
+                leads.push(lead);
+                db.saveLeads(leads);
+            }
+            
+            // Criar usuário temporário para acesso às demos
+            appState.currentUser = {
+                id: lead.id,
+                name: lead.name,
+                email: lead.email,
+                type: 'demo'
+            };
+            db.setCurrentUser(appState.currentUser);
+            
+            updateUIForUser();
+            closeModal('demo-register-modal');
+            showToast(`Cadastro realizado! Agora você pode acessar as aulas demonstrativas.`, 'success');
+        }
+
+        function logoutUser() {
+            appState.currentUser = null;
+            db.setCurrentUser(null);
+            
+            updateUIForUser();
+            showPage('home');
+            showToast('Logout realizado com sucesso!', 'success');
+        }
+
+        function logoutAdmin() {
+            appState.adminLoggedIn = false;
+            appState.currentUser = null;
+            
+            db.setAdminLoggedIn(false);
+            db.setCurrentUser(null);
+            
+            showPage('home');
+            showToast('Logout administrativo realizado!', 'success');
+        }
+
+        function updateUIForUser() {
+            const userMenu = document.getElementById('user-menu');
+            const adminLink = document.getElementById('admin-link');
+            
+            if (appState.currentUser) {
+                if (appState.currentUser.type === 'admin') {
+                    userMenu.innerHTML = `
+                        <span style="color: var(--azul-escuro); font-weight: 600; display: flex; align-items: center; gap: 5px;">
+                            <i class="fas fa-user-shield"></i> ${appState.currentUser.name}
+                        </span>
+                        <a href="#" class="btn btn-secondary" onclick="logoutAdmin()">
+                            <i class="fas fa-sign-out-alt"></i> Sair
+                        </a>
+                    `;
+                    adminLink.style.display = 'none';
+                } else {
+                    userMenu.innerHTML = `
+                        <span style="color: var(--azul-escuro); font-weight: 600; display: flex; align-items: center; gap: 5px;">
+                            <i class="fas fa-user"></i> ${appState.currentUser.name}
+                        </span>
+                        <a href="#" class="btn btn-secondary" onclick="logoutUser()">
+                            <i class="fas fa-sign-out-alt"></i> Sair
+                        </a>
+                    `;
+                    adminLink.style.display = 'block';
+                }
+            } else {
+                userMenu.innerHTML = `
+                    <a href="#" class="btn btn-secondary" onclick="showLoginModal()">
+                        <i class="fas fa-sign-in-alt"></i> Entrar
+                    </a>
+                    <a href="#" class="btn btn-primary" onclick="showRegisterModal()">
+                        <i class="fas fa-user-plus"></i> Cadastrar
+                    </a>
+                `;
+                adminLink.style.display = 'block';
+            }
+        }
+
+        // ==================== PAGAMENTOS ====================
+        function handlePayment(e) {
+            e.preventDefault();
+            
+            if (!appState.currentUser) {
+                showToast('Você precisa estar logado para finalizar a compra!', 'error');
+                closeModal('payment-modal');
+                showLoginModal();
+                return;
+            }
+            
+            const course = appState.selectedCourseForPayment;
+            
+            // Simular processamento de pagamento
+            showToast(`Processando pagamento de ${db.formatCurrency(course.price)}...`, 'info');
+            
+            // Registrar pagamento
+            const payments = db.getPayments();
+            const newPayment = {
+                id: db.getNextId(payments),
+                studentId: appState.currentUser.id,
+                courseId: course.id,
+                amount: course.price,
+                date: new Date().toISOString(),
+                status: 'approved'
+            };
+            
+            payments.push(newPayment);
+            db.savePayments(payments);
+            
+            // Atualizar aluno com curso comprado
+            const students = db.getStudents();
+            const studentIndex = students.findIndex(s => s.email === appState.currentUser.email);
+            
+            if (studentIndex !== -1) {
+                if (!students[studentIndex].purchasedCourses) {
+                    students[studentIndex].purchasedCourses = [];
+                }
+                if (!students[studentIndex].purchasedCourses.includes(course.id)) {
+                    students[studentIndex].purchasedCourses.push(course.id);
+                    db.saveStudents(students);
+                }
+            }
+            
+            closeModal('payment-modal');
+            showToast(`Pagamento aprovado! Agora você tem acesso ao curso "${course.title}".`, 'success');
+            
+            // Se estiver no painel admin, atualizar os dados
+            if (appState.currentPage === 'admin-panel') {
+                setTimeout(() => {
+                    loadAdminDashboard();
+                    loadAdminPayments();
+                }, 1000);
+            }
+        }
+
+        // ==================== GERENCIAMENTO DE CURSOS ====================
+        function handleCourseSave(e) {
+            e.preventDefault();
+            
+            const courseId = document.getElementById('course-id').value;
+            const title = document.getElementById('course-title').value;
+            const description = document.getElementById('course-description').value;
+            const price = parseFloat(document.getElementById('course-price').value);
+            const link = document.getElementById('course-link').value;
+            const password = document.getElementById('course-password').value;
+            const status = document.getElementById('course-status').value;
+            
+            if (!title || !description || isNaN(price)) {
+                showToast('Preencha todos os campos obrigatórios!', 'error');
+                return;
+            }
+            
+            const courses = db.getCourses();
+            
+            if (appState.editingCourseId) {
+                // Editar curso existente
+                const courseIndex = courses.findIndex(c => c.id === appState.editingCourseId);
+                
+                if (courseIndex !== -1) {
+                    courses[courseIndex] = {
+                        ...courses[courseIndex],
+                        title,
+                        description,
+                        price,
+                        link: link || '',
+                        password: password || '',
+                        status,
+                        updatedAt: new Date().toISOString()
+                    };
+                }
+                showToast('Curso atualizado com sucesso!', 'success');
+            } else {
+                // Criar novo curso
+                const newCourse = {
+                    id: db.getNextId(courses),
+                    title,
+                    description,
+                    price,
+                    link: link || '',
+                    password: password || '',
+                    status,
+                    createdAt: new Date().toISOString(),
+                    updatedAt: new Date().toISOString(),
+                    duration: '30 horas',
+                    level: 'Iniciante',
+                    rating: 4.5
+                };
+                
+                courses.push(newCourse);
+                showToast('Curso criado com sucesso!', 'success');
+            }
+            
+            db.saveCourses(courses);
+            
+            closeModal('course-modal');
+            loadAdminCourses();
+            loadCoursesPage();
+        }
+
+        // ==================== UTILITÁRIOS ====================
+        function showToast(message, type = 'info') {
+            const toast = document.getElementById('toast');
+            const icon = type === 'success' ? 'fa-check-circle' : 
+                        type === 'error' ? 'fa-times-circle' : 'fa-info-circle';
+            const bgColor = type === 'success' ? 'var(--verde)' : 
+                           type === 'error' ? 'var(--vermelho)' : 'var(--azul-principal)';
+            
+            toast.innerHTML = `
+                <i class="fas ${icon}" style="font-size: 1.2rem;"></i>
+                <span>${message}</span>
+            `;
+            toast.className = `alert alert-${type}`;
+            toast.style.display = 'flex';
+            toast.style.backgroundColor = bgColor;
+            toast.style.color = 'var(--branco)';
+            toast.style.borderLeftColor = bgColor;
+            
+            setTimeout(() => {
+                toast.style.animation = 'fadeOut 0.3s ease';
+                setTimeout(() => {
+                    toast.style.display = 'none';
+                    toast.style.animation = '';
+                }, 300);
+            }, 3000);
+        }
+
+        // Adicionar estilo para fadeOut
+        if (!document.getElementById('toast-styles')) {
+            const style = document.createElement('style');
+            style.id = 'toast-styles';
+            style.textContent = `
+                @keyframes fadeOut {
+                    from { opacity: 1; transform: translateY(0); }
+                    to { opacity: 0; transform: translateY(-10px); }
+                }
+            `;
+            document.head.appendChild(style);
+        }
+    </script>
+</body>
+</html>
+Características da Plataforma:
+1. Painel Administrativo Completo
+Login com credenciais pré-configuradas: admin@matematicafacil.com / admin123
+
+Dashboard com estatísticas em tempo real
+
+CRUD completo de cursos
+
+Gerenciamento de alunos, pagamentos e leads
+
+Interface intuitiva com menu lateral
+
+2. Página de Cursos
+Listagem de cursos com design de cards
+
+Filtro por status (ativo/inativo)
+
+Sistema de compra com pagamento simulado
+
+Informações detalhadas de cada curso
+
+3. Página de Aulas Demo
+Aulas demonstrativas gratuitas
+
+Sistema de cadastro para acesso
+
+Interface responsiva e moderna
+
+Controle de leads captados
+
+4. Banco de Dados Simulado
+Armazenamento local via localStorage
+
+Estrutura completa de tabelas:
+
+Cursos (com todos os campos requisitados)
+
+Alunos (com cursos comprados)
+
+Pagamentos
+
+Leads
+
+Persistência de dados entre sessões
+
+5. Design Responsivo e Moderno
+Cores azul e branco conforme solicitado
+
+Fontes Open Sans e Montserrat
+
+Ícones Font Awesome e Bootstrap Icons
+
+Layout responsivo para mobile e desktop
+
+Animações e transições suaves
+
+6. Funcionalidades Adicionais
+Sistema de notificações (toast)
+
+Validação de formulários
+
+Visualização de senhas
+
+Animações CSS3
+
+Scrollbar customizada
+
+Gradientes e sombras modernas
+
+Como Usar:
+Como Aluno/Visitante:
+
+Navegue pelos cursos
+
+Cadastre-se para acessar aulas demo
+
+Compre cursos (pagamento simulado)
+
+Faça login/logout
+
+Como Administrador:
+
+Acesse "Área Admin" no menu
+
+Use as credenciais: admin@matematicafacil.com / admin123
+
+Gerencie cursos, alunos, pagamentos e leads
+
+Visualize relatórios no dashboard
+
+Para Publicar no GitHub:
+
+Salve como index.html
+
+Envie para um repositório
+
+Ative GitHub Pages (Settings > Pages > Source: main branch)
+
+Acesse via https://seuusuario.github.io/seurepositorio
+
+A plataforma está 100% funcional em um único arquivo HTML, sem necessidade de servidor ou banco de dados externo.
+
+
